@@ -1,0 +1,18 @@
+create user account
+mongoose setup
+schema
+user creater --> passwor-->hash
+jwt token --> cookie
+login-> token -> decrpyt -> email
+
+
+    RECOUSION-->
+                        login or logout page hai logout krne pr cookie delte ho jayegi or ham user create krenge to user data save      
+            ho jayeaga use login krne pr when id pass is sahi to login ho jayega or ek cokkie apko mtlb ki token mil jayega
+dekha jaye to login or logout ka page banaya hai maan lo pass or id galt hai to login page pr nahi jayega
+
+
+
+finish-->
+tujhe ab login page banana hai mtlb profile page banana hai 
+or ek logout page banana hai okay!
