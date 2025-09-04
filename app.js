@@ -4,10 +4,9 @@ const userModel = require("./models/user")
 const bcrypt = require('bcrypt')
 const jwt  = require("jsonwebtoken");
 
-const cookieparser = require("cookie-parser")
+const cookieParser = require("cookie-parser")
 const path = require('path');
 const { JsonWebTokenError } = require('jsonwebtoken');
-const user = require('./models/user');
 
 app.set('view engine', "ejs")
 
@@ -15,6 +14,8 @@ app.set('view engine', "ejs")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(cookieParser())
 
 
 app.get('/register', (req, res) => {
@@ -35,7 +36,7 @@ app.post('/create', (req, res) => {
                 age:age
 
             })
-            let token = jwt.sign({email},"secret")
+            let token = jwt.sign({email}, process.env.JWT_SECRET || "secret")
             res.cookie("token",token)
 
             // res.send(Createduser)
@@ -56,7 +57,7 @@ app.post('/login',async function(req,res){
 
 bcrypt.compare(req.body.password,user.password,function(err,result){             //body vaala pass front ka hai userpass jo beckand me save hai
     if(result){ 
-        let token = jwt.sign({email:user.email},"secret")                   //email ki value user me save hai to value of email-> user.email
+        let token = jwt.sign({email:user.email}, process.env.JWT_SECRET || "secret")                   //email ki value user me save hai to value of email-> user.email
         res.cookie("token",token)                                           
         res.render("index2")                               //user ki value front end me pass ki hai
 
@@ -78,9 +79,17 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-// Home page route for index2
+// Serve React app for all non-API routes
 app.get('/', (req, res) => {
-    res.render('index2')
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.listen(3000)
+// API routes
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', message: 'Server is running' })
+})
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

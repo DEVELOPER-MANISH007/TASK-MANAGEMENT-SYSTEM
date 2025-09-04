@@ -1,12 +1,65 @@
-# React + Vite
+# Task Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack task management application built with React frontend and Express.js backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User Authentication (Admin & Employee)
+- Task Management
+- Dashboard for Admin and Employees
+- Responsive Design with Tailwind CSS
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Vite, Tailwind CSS
+- **Backend**: Express.js, Node.js
+- **Database**: MongoDB
+- **Authentication**: JWT, bcrypt
+
+## Deployment on Render.com
+
+### Environment Variables Required:
+
+```
+JWT_SECRET=your_super_secret_jwt_key_here
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/authestapp
+NODE_ENV=production
+```
+
+### Default Admin Credentials:
+- Email: `admin@me.com`
+- Password: `123`
+
+## Local Development
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start development server:
+```bash
+npm run dev
+```
+
+3. Start backend server:
+```bash
+npm start
+```
+
+## Production Build
+
+```bash
+npm run build
+npm start
+```
+
+## API Endpoints
+
+- `GET /` - Serve React app
+- `GET /api/health` - Health check
+- `POST /create` - User registration
+- `POST /login` - User login
+- `GET /logout` - User logout
+- `GET /register` - Registration page
+- `GET /contact` - Contact page
