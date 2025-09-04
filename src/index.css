@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body{
+  background: #090000
+}
+
+
+#tasklist::-webkit-scrollbar{
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #232323;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ade80; /* Tailwind green-400 */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e; /* Tailwind green-500 */
+}

@@ -21,4 +21,8 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+<<<<<<< HEAD
 *.sw?
+=======
+*.sw?
+>>>>>>> 66b3778 (Initial commit - Task Management-system)
